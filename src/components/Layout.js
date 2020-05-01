@@ -26,16 +26,15 @@ const offStyles = {
 const AnimatedSolarButton = (props) => {
   const { active, item, setActive } = props;
   const [expanded, setExpanded] = useState(false);
+  console.log("AHora es ---->");
+  console.log(item);
   const getStyles = () => {
-    if (active === null) {
-      return expanded ? expandedStyles : minifiedStyles;
-    }
-    if (item === active) return onStyles;
-    return offStyles;
+    return expanded ? expandedStyles : minifiedStyles;
   };
   const styledProps = useSpring(getStyles());
   return (
     <animated.button
+      key={item}
       onClick={() => {
         setExpanded(!expanded);
         if (!expanded) {
@@ -43,7 +42,7 @@ const AnimatedSolarButton = (props) => {
         }
         setActive(null);
       }}
-      style={styledProps}
+      style={{ ...styledProps, ...props.transitionProps }}
       {...props}
     />
   );
