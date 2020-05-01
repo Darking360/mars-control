@@ -8,9 +8,8 @@ const SolarImageRecord = ({
   active,
   setActive,
   item,
-  transitionProps,
 }) => {
-  const utils = { active, setActive, item, transitionProps };
+  const utils = { active, setActive, item };
   return (
     <SolarButton {...utils}>
       <SolarImage src={imageSrc} alt={details} />

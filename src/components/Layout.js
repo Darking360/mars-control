@@ -5,31 +5,28 @@ import { useSpring, useTransition, animated } from "react-spring";
 const expandedStyles = {
   width: "100%",
   height: "100%",
-  config: { mass: 5, tension: 500, friction: 80 },
+  transform: "translate3d(0px,0px,0)",
+  config: { mass: 5, tension: 800, friction: 150 },
 };
 const minifiedStyles = {
   width: "30%",
   height: "30%",
-  config: { mass: 5, tension: 900, friction: 150 },
+  transform: "translate3d(0px,0px,0)",
+  config: { mass: 5, tension: 800, friction: 150 },
 };
 
-const onStyles = {
-  width: "100%",
-  height: "100%",
-};
-
-const offStyles = {
+const offMinified = {
   width: "0%",
   height: "0%",
+  transform: "translate3d(1000px,1000px,0)",
+  config: { mass: 5, tension: 800, friction: 150 },
 };
 
 const AnimatedSolarButton = (props) => {
   const { active, item, setActive } = props;
   const [expanded, setExpanded] = useState(false);
-  console.log("AHora es ---->");
-  console.log(item);
   const getStyles = () => {
-    return expanded ? expandedStyles : minifiedStyles;
+    return expanded ? expandedStyles : active ? offMinified : minifiedStyles;
   };
   const styledProps = useSpring(getStyles());
   return (
@@ -42,7 +39,7 @@ const AnimatedSolarButton = (props) => {
         }
         setActive(null);
       }}
-      style={{ ...styledProps, ...props.transitionProps }}
+      style={styledProps}
       {...props}
     />
   );
@@ -73,8 +70,9 @@ export const SolarImage = styled.img`
 
 export const VisualRecordsContainer = styled(ComponentContainer)`
   display: flex;
-  flex: 1 0 21%; /* explanation below */
+  flex: 1 0 21%;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  overflow: hidden;
 `;

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { VisualRecordsContainer } from "../components/Layout";
 import SolarImageRecord from "../components/SolarImageRecord";
-import { useTransition } from "react-spring";
 
 const solarImages = [
   {
@@ -69,32 +68,23 @@ const solarImages = [
   },
 ];
 
-function renderSolarImages(active, setActive, transitions) {
+function renderSolarImages(active, setActive) {
   const utils = { active, setActive };
-  return solarImages.map(
-    (record, i) =>
-      (!active || active === record.key) && (
-        <SolarImageRecord
-          key={(i + 1).toString()}
-          item={(i + 1).toString()}
-          {...record}
-          {...utils}
-          transitionProps={transitions[i].props}
-        />
-      )
-  );
+  return solarImages.map((record, i) => (
+    <SolarImageRecord
+      key={(i + 1).toString()}
+      item={(i + 1).toString()}
+      {...record}
+      {...utils}
+    />
+  ));
 }
 
 const SolarVisualRecords = () => {
   const [active, setActive] = useState(null);
-  const transitions = useTransition(solarImages, (item) => item.key, {
-    from: { transform: "translate3d(0,-40px,0)" },
-    enter: { transform: "translate3d(0,0px,0)" },
-    leave: { transform: "translate3d(0,-40px,0)" },
-  });
   return (
     <VisualRecordsContainer>
-      {renderSolarImages(active, setActive, transitions)}
+      {renderSolarImages(active, setActive)}
     </VisualRecordsContainer>
   );
 };
