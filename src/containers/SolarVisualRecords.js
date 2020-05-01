@@ -71,8 +71,6 @@ const solarImages = [
 
 function renderSolarImages(active, setActive, transitions) {
   const utils = { active, setActive };
-  console.log("Hay active ----->");
-  console.log(active);
   return solarImages.map(
     (record, i) =>
       (!active || active === record.key) && (
