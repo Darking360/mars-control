@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ComponentContainer } from "../components/Layout";
 import * as d3 from "d3-fetch";
 import {
   AreaChart,
@@ -9,16 +8,15 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import { ComponentContainer, ChartSection } from "../components/Layout";
 
 const SolarVikingData = () => {
   const [initialData, setInitialData] = useState(null);
   const [data, setData] = useState([]);
   const [heapCount, setHeap] = useState(0);
-
-  console.log("Data ----->");
-  console.log(data);
-
-  // Reading data
+  const [type, setType] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,38 +47,81 @@ const SolarVikingData = () => {
     return () => clearInterval(interval);
   });
 
-  return (
-    <ComponentContainer>
-      <AreaChart
-        width={500}
-        height={400}
-        data={data}
-        margin={{
-          top: 10,
-          right: 30,
-          left: 0,
-          bottom: 0,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="Sol" />
-        <YAxis domain={["auto", "auto"]} />
-        <Tooltip />
+  const handleVisualizationChange = ({ target: { value } }) => {
+    setType(value);
+  };
+
+  const renderChartData = () => {
+    if (type === 1) {
+      return [
         <Area
           type="monotone"
           dataKey="wind_m_sec"
           stackId="1"
           stroke="#8884d8"
           fill="#8884d8"
-        />
+        />,
         <Area
           type="monotone"
           dataKey="wind_deg."
           stackId="1"
           stroke="#82ca9d"
           fill="#82ca9d"
-        />
-      </AreaChart>
+        />,
+      ];
+    }
+    return [
+      <Area
+        type="monotone"
+        dataKey="pressure_mb"
+        stackId="1"
+        stroke="#8884d8"
+        fill="#8884d8"
+      />,
+      <Area
+        type="monotone"
+        dataKey="temp_F"
+        stackId="1"
+        stroke="#82ca9d"
+        fill="#82ca9d"
+      />,
+      <Area
+        type="monotone"
+        dataKey="temp_C"
+        stackId="1"
+        stroke="#ffc658"
+        fill="#ffc658"
+      />,
+    ];
+  };
+
+  return (
+    <ComponentContainer>
+      <section>
+        <Select value={type} onChange={handleVisualizationChange}>
+          <MenuItem value={1}>Wind</MenuItem>
+          <MenuItem value={2}>Pressure and Temperature</MenuItem>
+        </Select>
+      </section>
+      <ChartSection>
+        <AreaChart
+          width={500}
+          height={400}
+          data={data}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="Sol" />
+          <YAxis domain={["auto", "auto"]} />
+          <Tooltip />
+          {renderChartData()}
+        </AreaChart>
+      </ChartSection>
     </ComponentContainer>
   );
 };

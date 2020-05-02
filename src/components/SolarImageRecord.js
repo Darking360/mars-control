@@ -19,7 +19,7 @@ const SolarImageRecord = ({
   const solarButtonProps = { active, setActive, expanded, setExpanded, item };
   const animatedContainerProps = { active, expanded };
   return (
-    <FullAnimatedContainer {...animatedContainerProps} customWidth="100%">
+    <FullAnimatedContainer {...animatedContainerProps}>
       <SolarButton {...solarButtonProps}>
         <SolarImage src={imageSrc} alt={detail} />
       </SolarButton>

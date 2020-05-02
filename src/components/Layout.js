@@ -53,8 +53,10 @@ export const AnimatedSolarContainer = (props) => {
   const { active, expanded } = props;
   const getStyles = () => {
     return expanded
-      ? { ...expandedStyles, width: props.customWidth }
+      ? { ...expandedStyles, width: props.customWidth || "100%" }
       : active
+      ? offMinified
+      : props.customWidth
       ? offMinified
       : minifiedStyles;
   };
@@ -83,8 +85,8 @@ export const AnimatedHalfContainer = styled(AnimatedSolarContainer)`
 `;
 
 export const ComponentContainer = styled.div`
-  width: 25vw;
-  height: 25vh;
+  width: 45vw;
+  height: 45vh;
   border-radius: 15px;
   box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
 `;
@@ -111,4 +113,16 @@ export const VisualRecordsContainer = styled(ComponentContainer)`
   align-items: center;
   flex-wrap: wrap;
   overflow: hidden;
+`;
+
+// Charts components =========================
+
+export const ChartSection = styled.section`
+  width: 100%;
+  height: 100%;
+  div.recharts-wrapper,
+  svg.recharts-surface {
+    width: 100% !important;
+    height: 100% !important;
+  }
 `;
