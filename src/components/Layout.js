@@ -123,6 +123,6 @@ export const ChartSection = styled.section`
   div.recharts-wrapper,
   svg.recharts-surface {
     width: 100% !important;
-    height: 100% !important;
+    height: 95% !important;
   }
 `;
