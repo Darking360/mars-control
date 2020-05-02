@@ -5,7 +5,6 @@ import {
   FullAnimatedContainer,
   AnimatedHalfContainer,
 } from "./Layout";
-import { useSpring, animated } from "react-spring";
 
 const SolarImageRecord = ({
   imageSrc,

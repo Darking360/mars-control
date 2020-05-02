@@ -126,3 +126,37 @@ export const ChartSection = styled.section`
     height: 95% !important;
   }
 `;
+
+// Comms components =========================
+
+export const CommsContainer = styled(ComponentContainer)`
+  section.contacts {
+    background: lightcoral;
+  }
+  section.chat {
+    background: lightgreen;
+  }
+
+  section.input {
+    background: lightgoldenrodyellow;
+    display: flex;
+    input {
+      background: none;
+      outline: none;
+      border: 1px solid grey;
+      border-radius: 15px;
+      width: 85%;
+    }
+    button {
+      background: none;
+      outline: none;
+      border: none;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+  }
+`;
