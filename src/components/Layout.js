@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useSpring, useTransition, animated } from "react-spring";
+import { useSpring, animated } from "react-spring";
 
 const expandedStyles = {
   width: "100%",
@@ -8,6 +8,7 @@ const expandedStyles = {
   transform: "translate3d(0px,0px,0)",
   config: { mass: 5, tension: 800, friction: 150 },
 };
+
 const minifiedStyles = {
   width: "30%",
   height: "30%",
@@ -18,15 +19,18 @@ const minifiedStyles = {
 const offMinified = {
   width: "0%",
   height: "0%",
-  transform: "translate3d(1000px,1000px,0)",
+  transform: "translate3d(0px,1000px,0)",
   config: { mass: 5, tension: 800, friction: 150 },
 };
 
 const AnimatedSolarButton = (props) => {
-  const { active, item, setActive } = props;
-  const [expanded, setExpanded] = useState(false);
+  const { active, item, setActive, expanded, setExpanded } = props;
   const getStyles = () => {
-    return expanded ? expandedStyles : active ? offMinified : minifiedStyles;
+    return expanded
+      ? { ...expandedStyles, width: "50%" }
+      : active
+      ? offMinified
+      : expandedStyles;
   };
   const styledProps = useSpring(getStyles());
   return (
@@ -45,6 +49,39 @@ const AnimatedSolarButton = (props) => {
   );
 };
 
+export const AnimatedSolarContainer = (props) => {
+  const { active, expanded } = props;
+  const getStyles = () => {
+    return expanded
+      ? { ...expandedStyles, width: props.customWidth }
+      : active
+      ? offMinified
+      : minifiedStyles;
+  };
+  const styledProps = useSpring(getStyles());
+  return <animated.div style={styledProps} {...props} />;
+};
+
+export const FullAnimatedContainer = styled(AnimatedSolarContainer)`
+  display: flex;
+  overflow: hidden;
+`;
+
+export const AnimatedHalfContainer = styled(AnimatedSolarContainer)`
+  overflow: hidden;
+  ${({ expanded }) =>
+    expanded &&
+    `
+    overflow-y: scroll;
+  `}
+  h3 {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 0.5em 0;
+  }
+`;
+
 export const ComponentContainer = styled.div`
   width: 25vw;
   height: 25vh;
@@ -56,7 +93,6 @@ export const SolarButton = styled(AnimatedSolarButton)`
   background: none;
   outline: none;
   border-radius: 15px;
-  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
   overflow: hidden;
   padding: 0;
   display: block;

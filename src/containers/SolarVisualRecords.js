@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { VisualRecordsContainer } from "../components/Layout";
 import SolarImageRecord from "../components/SolarImageRecord";
+import { useSpring, animated } from "react-spring";
 
 const solarImages = [
   {
