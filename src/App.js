@@ -1,13 +1,15 @@
 import React from "react";
 import "./App.css";
 import SolarVisualRecords from "./containers/SolarVisualRecords";
-import SolarVikingData from "./containers/SolarVikingData";
+import SolarPathfinder from "./containers/SolarPathfinder";
+import SolarViking from "./containers/SolarViking";
 
 function App() {
   return (
     <div className="App">
       <SolarVisualRecords />
-      <SolarVikingData />
+      <SolarPathfinder />
+      <SolarViking />
     </div>
   );
 }
