@@ -1,6 +1,6 @@
 import React from "react";
 import { Area } from "recharts";
-import BaseSolarVisualizer from "./BaseSolarVisualizer";
+import BaseSolarVisualizer from "../components/BaseSolarVisualizer";
 
 const SolarPathfinder = () => {
   const types = {

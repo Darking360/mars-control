@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import { ComponentContainer, ChartSection } from "../components/Layout";
+import { ComponentContainer, ChartSection } from "./Layout";
 
 const SolarChartVisualizer = ({ types, options, data }) => {
-  console.log("Tengo data ---->");
-  console.log(data);
   const [type, setType] = useState(1);
 
   const handleVisualizationChange = ({ target: { value } }) => {
