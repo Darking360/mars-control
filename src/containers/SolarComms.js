@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSpring, animated, config } from "react-spring";
+import { useSpring, useTransition, animated, config } from "react-spring";
 import CreateIcon from "@material-ui/icons/Create";
 import SendIcon from "@material-ui/icons/Send";
 import {
@@ -117,11 +117,15 @@ const initialMessages = [
   },
 ];
 
-const renderMessages = (messages) => {
-  return messages.map(({ type, message }) => (
-    <div className={`${type}-message`}>
+const renderMessages = (messages, transitions) => {
+  return messages.map(({ type, message }, i) => (
+    <animated.div
+      key={i}
+      style={transitions[i].props}
+      className={`${type}-message`}
+    >
       <span>{message}</span>
-    </div>
+    </animated.div>
   ));
 };
 
@@ -139,6 +143,12 @@ const SolarComms = () => {
   const avatarStyles = useSpring({
     ...(contact ? closedAvatar : openAvatar),
     config: config.stiff,
+  });
+
+  const transitions = useTransition(messages, (message, i) => i, {
+    from: { transform: "translate3d(-40px,0,0)", opacity: "0" },
+    enter: { transform: "translate3d(0,0,0)", opacity: "1" },
+    leave: { transform: "translate3d(-40px,0,0)", opacity: "0" },
   });
 
   const handleChange = ({ target: { value } }) => {
@@ -165,7 +175,7 @@ const SolarComms = () => {
         {renderContacts(setContact, contact, avatarStyles)}
       </animated.section>
       <animated.section id="chat" style={chatContainerProps} className="chat">
-        {renderMessages(messages)}
+        {renderMessages(messages, transitions)}
       </animated.section>
       <animated.section style={inputContainerProps} className="input">
         <form onSubmit={handleSubmit}>
