@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useSpring, useChain, animated, config } from "react-spring";
+import React, { useState } from "react";
+import { useSpring, animated, config } from "react-spring";
 import CreateIcon from "@material-ui/icons/Create";
 import {
   CommsContainer,
@@ -17,18 +17,19 @@ const chatMinified = { height: "0%" };
 const inputExpanded = { height: "20%" };
 const inputMinified = { height: "0%" };
 
-const openAvatarWidth = { width: "50%" };
-const closedAvatarWidth = { width: "0%" };
-
 const openAvatar = {
+  width: "50%",
   height: "auto",
   padding: "1rem 2rem",
   visibility: "visible",
+  pDisplay: "block",
 };
 const closedAvatar = {
+  width: "0%",
   height: "none",
   padding: "0rem 0rem",
   visibility: "hidden",
+  pDisplay: "none",
 };
 
 const contacts = [
@@ -76,7 +77,7 @@ const renderContacts = (setContact, selectedContact, avatarStyles) => {
         <animated.h3 style={{ visibility: avatarStyles.visibility }}>
           {contact.name}
         </animated.h3>
-        <animated.p style={{ visibility: avatarStyles.visibility }}>
+        <animated.p style={{ display: avatarStyles.pDisplay }}>
           {contact.occupation}
         </animated.p>
         <BaseAnimatedButton
@@ -94,34 +95,21 @@ const renderContacts = (setContact, selectedContact, avatarStyles) => {
 
 const SolarComms = () => {
   const [contact, setContact] = useState(null);
-  const firstSpring = useRef();
-  const secondSpring = useRef();
-  const contactsContainerWidthProps = useSpring(
-    !contact ? openAvatarWidth : closedAvatarWidth
-  );
   const chatContainerProps = useSpring(!contact ? chatMinified : chatExpanded);
   const inputContainerProps = useSpring(
     !contact ? inputMinified : inputExpanded
   );
+  const contactsContainerProps = useSpring(
+    !contact ? contactsExpanded : contactsMinified
+  );
   const avatarStyles = useSpring({
     ...(contact ? closedAvatar : openAvatar),
-    ref: firstSpring,
     config: config.stiff,
   });
-  const contactsContainerProps = useSpring({
-    ...(!contact ? contactsExpanded : contactsMinified),
-    ref: secondSpring,
-    config: config.stiff,
-  });
-  // refs
-  useChain([secondSpring, firstSpring], [0.1, 0.6]);
   return (
     <CommsContainer contact={contact}>
       <animated.section style={contactsContainerProps} className="contacts">
-        {renderContacts(setContact, contact, {
-          ...avatarStyles,
-          ...contactsContainerWidthProps,
-        })}
+        {renderContacts(setContact, contact, avatarStyles)}
       </animated.section>
       <animated.section style={chatContainerProps} className="chat">
         <h3>Chat</h3>
