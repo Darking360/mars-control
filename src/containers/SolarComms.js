@@ -1,7 +1,12 @@
-import React, { useState } from "react";
-import { CommsContainer, Contact, BaseButton } from "../components/Layout";
-import { useSpring, animated } from "react-spring";
+import React, { useState, useRef } from "react";
+import { useSpring, useChain, animated, config } from "react-spring";
 import CreateIcon from "@material-ui/icons/Create";
+import {
+  CommsContainer,
+  Contact,
+  BaseButton,
+  BaseAnimatedButton,
+} from "../components/Layout";
 
 const contactsExpanded = { height: "100%" };
 const contactsMinified = { height: "20%" };
@@ -11,6 +16,20 @@ const chatMinified = { height: "0%" };
 
 const inputExpanded = { height: "20%" };
 const inputMinified = { height: "0%" };
+
+const openAvatarWidth = { width: "50%" };
+const closedAvatarWidth = { width: "0%" };
+
+const openAvatar = {
+  height: "auto",
+  padding: "1rem 2rem",
+  visibility: "visible",
+};
+const closedAvatar = {
+  height: "none",
+  padding: "0rem 0rem",
+  visibility: "hidden",
+};
 
 const contacts = [
   {
@@ -39,42 +58,70 @@ const contacts = [
   },
 ];
 
-const renderContacts = (setContact, selectedContact) => {
+const renderContacts = (setContact, selectedContact, avatarStyles) => {
   return contacts.map((contact) => (
-    <Contact key={contact.id}>
-      <div className="main">
+    <Contact
+      key={contact.id}
+      customStyles={{ ...avatarStyles, visibility: "visible", padding: 0 }}
+    >
+      <animated.div style={{ padding: avatarStyles.padding }} className="main">
         <img
           className="avatar"
           alt={`${contact.name} - Avatar`}
           src={contact.avatarUrl}
+          onClick={() =>
+            selectedContact ? setContact(null) : setContact(contact.id)
+          }
         />
-        <h3>{contact.name}</h3>
-        <p>{contact.occupation}</p>
-        <BaseButton
+        <animated.h3 style={{ visibility: avatarStyles.visibility }}>
+          {contact.name}
+        </animated.h3>
+        <animated.p style={{ visibility: avatarStyles.visibility }}>
+          {contact.occupation}
+        </animated.p>
+        <BaseAnimatedButton
+          style={{ visibility: avatarStyles.visibility }}
           onClick={() =>
             selectedContact ? setContact(null) : setContact(contact.id)
           }
         >
           <CreateIcon />
-        </BaseButton>
-      </div>
+        </BaseAnimatedButton>
+      </animated.div>
     </Contact>
   ));
 };
 
 const SolarComms = () => {
   const [contact, setContact] = useState(null);
-  const contactsContainerProps = useSpring(
-    !contact ? contactsExpanded : contactsMinified
+  const firstSpring = useRef();
+  const secondSpring = useRef();
+  const contactsContainerWidthProps = useSpring(
+    !contact ? openAvatarWidth : closedAvatarWidth
   );
   const chatContainerProps = useSpring(!contact ? chatMinified : chatExpanded);
   const inputContainerProps = useSpring(
     !contact ? inputMinified : inputExpanded
   );
+  const avatarStyles = useSpring({
+    ...(contact ? closedAvatar : openAvatar),
+    ref: firstSpring,
+    config: config.stiff,
+  });
+  const contactsContainerProps = useSpring({
+    ...(!contact ? contactsExpanded : contactsMinified),
+    ref: secondSpring,
+    config: config.stiff,
+  });
+  // refs
+  useChain([secondSpring, firstSpring], [0.1, 0.6]);
   return (
-    <CommsContainer>
+    <CommsContainer contact={contact}>
       <animated.section style={contactsContainerProps} className="contacts">
-        {renderContacts(setContact, contact)}
+        {renderContacts(setContact, contact, {
+          ...avatarStyles,
+          ...contactsContainerWidthProps,
+        })}
       </animated.section>
       <animated.section style={chatContainerProps} className="chat">
         <h3>Chat</h3>

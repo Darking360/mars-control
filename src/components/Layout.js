@@ -141,10 +141,15 @@ export const CommsContainer = styled(ComponentContainer)`
     background: lightcoral;
     padding: 1rem 1rem;
     display: grid;
-    grid-template-columns: 50% 50%;
     width: 100%;
     align-items: center;
     justify-items: center;
+    grid-template-columns: 50% 50%;
+    ${({ contact }) =>
+      contact &&
+      `
+      grid-template-columns: 25% 25% 25% 25%;
+    `}
   }
   section.chat {
     background: lightgreen;
@@ -171,7 +176,23 @@ export const CommsContainer = styled(ComponentContainer)`
   }
 `;
 
-export const Contact = styled.div`
+const AnimatedContact = (props) => {
+  const { customStyles } = props;
+  return <animated.div style={customStyles} {...props} />;
+};
+
+const AnimatedBaseButton = (props) => {
+  const { customStyles } = props;
+  return <animated.button style={customStyles} {...props} />;
+};
+
+export const BaseAnimatedButton = styled(AnimatedBaseButton)`
+  background: none;
+  outline: none;
+  border: none;
+`;
+
+export const Contact = styled(AnimatedContact)`
   height: 50%;
   width: 50%;
   margin-right: 5rem;
@@ -203,7 +224,7 @@ export const Contact = styled.div`
     box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
   }
 
-  ${BaseButton} {
+  ${BaseAnimatedButton} {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
