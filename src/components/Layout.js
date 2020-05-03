@@ -64,26 +64,6 @@ export const AnimatedSolarContainer = (props) => {
   return <animated.div style={styledProps} {...props} />;
 };
 
-export const FullAnimatedContainer = styled(AnimatedSolarContainer)`
-  display: flex;
-  overflow: hidden;
-`;
-
-export const AnimatedHalfContainer = styled(AnimatedSolarContainer)`
-  overflow: hidden;
-  ${({ expanded }) =>
-    expanded &&
-    `
-    overflow-y: scroll;
-  `}
-  h3 {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    padding: 0.5em 0;
-  }
-`;
-
 export const ComponentContainer = styled.div`
   width: 45vw;
   height: 45vh;
@@ -119,6 +99,44 @@ export const BaseButton = styled.button`
   background: none;
   outline: none;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const AnimatedHalfContainer = styled(AnimatedSolarContainer)`
+  overflow: hidden;
+  position: relative;
+  ${({ expanded }) =>
+    expanded &&
+    `
+    overflow-y: scroll;
+  `}
+  h3 {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 0.5em 0;
+  }
+  ${BaseButton} {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+`;
+
+export const FullAnimatedContainer = styled(AnimatedSolarContainer)`
+  display: flex;
+  overflow: hidden;
+  ${BaseButton} {
+    width: 2rem;
+    height: 2rem;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+  }
 `;
 
 // Charts components =========================

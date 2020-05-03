@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import {
+  BaseButton,
   SolarButton,
   SolarImage,
   FullAnimatedContainer,
@@ -25,6 +27,16 @@ const SolarImageRecord = ({
       <AnimatedHalfContainer {...animatedContainerProps} customWidth="50%">
         <h3>{detail}</h3>
         <p>{resume}</p>
+        {active && (
+          <BaseButton
+            onClick={() => {
+              setActive(null);
+              setExpanded(false);
+            }}
+          >
+            <HighlightOffIcon />
+          </BaseButton>
+        )}
       </AnimatedHalfContainer>
     </FullAnimatedContainer>
   );
