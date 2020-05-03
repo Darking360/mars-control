@@ -135,8 +135,21 @@ export const ChartSection = styled.section`
 
 // Comms components =========================
 
+export const SendButton = styled(BaseButton)`
+  ${({ disabled }) =>
+    disabled &&
+    `
+  &&&&& {
+    background-color: grey;
+  cursor: unset;
+  }
+`}
+`;
+
 export const CommsContainer = styled(ComponentContainer)`
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   section.contacts {
     background: lightcoral;
     padding: 1rem 0;
@@ -158,8 +171,8 @@ export const CommsContainer = styled(ComponentContainer)`
     background: lightgreen;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
+    overflow: auto;
+    margin-top: auto;
     div {
       border: none;
       box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
@@ -188,22 +201,37 @@ export const CommsContainer = styled(ComponentContainer)`
   }
 
   section.input {
-    background: lightgoldenrodyellow;
-    display: flex;
-    input {
-      background: none;
-      outline: none;
-      border: 1px solid grey;
-      border-radius: 15px;
-      width: 85%;
-    }
-    ${BaseButton} {
-      width: 5rem;
-      height: 5rem;
-      border-radius: 50%;
+    form {
+      height: 100%;
+      background: lightgoldenrodyellow;
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-content: center;
+      overflow: hidden;
+      input {
+        background: none;
+        outline: none;
+        border: 1px solid grey;
+        border-radius: 15px;
+        width: 85%;
+        height: 50%;
+        padding: 0 1rem;
+        margin-left: 1rem;
+      }
+      ${SendButton} {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background: green;
+        color: white;
+        box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3),
+          0 5px 12px rgba(0, 0, 0, 0.22);
+        margin: 0 1rem;
+        cursor: pointer;
+      }
     }
   }
 `;

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSpring, animated, config } from "react-spring";
 import CreateIcon from "@material-ui/icons/Create";
+import SendIcon from "@material-ui/icons/Send";
 import {
   CommsContainer,
   Contact,
-  BaseButton,
+  SendButton,
   BaseAnimatedButton,
 } from "../components/Layout";
 
@@ -93,8 +94,41 @@ const renderContacts = (setContact, selectedContact, avatarStyles) => {
   ));
 };
 
+const initialMessages = [
+  {
+    type: "in",
+    message:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  },
+  {
+    type: "in",
+    message:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  },
+  {
+    type: "out",
+    message:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  },
+  {
+    type: "in",
+    message:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  },
+];
+
+const renderMessages = (messages) => {
+  return messages.map(({ type, message }) => (
+    <div className={`${type}-message`}>
+      <span>{message}</span>
+    </div>
+  ));
+};
+
 const SolarComms = () => {
   const [contact, setContact] = useState(null);
+  const [messages, setMessages] = useState(initialMessages);
+  const [message, setMessage] = useState("");
   const chatContainerProps = useSpring(!contact ? chatMinified : chatExpanded);
   const inputContainerProps = useSpring(
     !contact ? inputMinified : inputExpanded
@@ -106,22 +140,45 @@ const SolarComms = () => {
     ...(contact ? closedAvatar : openAvatar),
     config: config.stiff,
   });
+
+  const handleChange = ({ target: { value } }) => {
+    setMessage(value);
+  };
+
+  const handleSubmit = () => {
+    if (message.length) submitMessage();
+  };
+
+  const submitMessage = () => {
+    setMessages([...messages, { type: "out", message }]);
+    setMessage("");
+  };
+
+  useEffect(() => {
+    const scrollingElement = document.getElementById("chat");
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
+  }, [messages]);
+
   return (
     <CommsContainer contact={contact}>
       <animated.section style={contactsContainerProps} className="contacts">
         {renderContacts(setContact, contact, avatarStyles)}
       </animated.section>
-      <animated.section style={chatContainerProps} className="chat">
-        <div className="out-message">
-          <span>Lorem ipsum message going forward</span>
-        </div>
-        <div className="in-message">
-          <span>Lorem ipsum message going in</span>
-        </div>
+      <animated.section id="chat" style={chatContainerProps} className="chat">
+        {renderMessages(messages)}
       </animated.section>
       <animated.section style={inputContainerProps} className="input">
-        <input type="text" />
-        <BaseButton>></BaseButton>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="message"
+            value={message}
+            onChange={handleChange}
+          />
+          <SendButton type="submit" onClick={submitMessage} disabled={!message}>
+            <SendIcon />
+          </SendButton>
+        </form>
       </animated.section>
     </CommsContainer>
   );
