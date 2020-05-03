@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated, config } from "react-spring";
 import CreateIcon from "@material-ui/icons/Create";
 import SendIcon from "@material-ui/icons/Send";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import {
   CommsContainer,
   Contact,
@@ -65,6 +66,7 @@ const renderContacts = (setContact, selectedContact, avatarStyles) => {
     <Contact
       key={contact.id}
       customStyles={{ ...avatarStyles, visibility: "visible", padding: 0 }}
+      isSelected={selectedContact && contact.id === selectedContact.id}
     >
       <animated.div style={{ padding: avatarStyles.padding }} className="main">
         <img
@@ -72,7 +74,7 @@ const renderContacts = (setContact, selectedContact, avatarStyles) => {
           alt={`${contact.name} - Avatar`}
           src={contact.avatarUrl}
           onClick={() =>
-            selectedContact ? setContact(null) : setContact(contact.id)
+            selectedContact ? setContact(null) : setContact(contact)
           }
         />
         <animated.h3 style={{ visibility: avatarStyles.visibility }}>
@@ -84,7 +86,7 @@ const renderContacts = (setContact, selectedContact, avatarStyles) => {
         <BaseAnimatedButton
           style={{ visibility: avatarStyles.visibility }}
           onClick={() =>
-            selectedContact ? setContact(null) : setContact(contact.id)
+            selectedContact ? setContact(null) : setContact(contact)
           }
         >
           <CreateIcon />
@@ -173,6 +175,14 @@ const SolarComms = () => {
     <CommsContainer contact={contact}>
       <animated.section style={contactsContainerProps} className="contacts">
         {renderContacts(setContact, contact, avatarStyles)}
+        {contact && (
+          <BaseAnimatedButton
+            onClick={() => setContact(null)}
+            className="close"
+          >
+            <HighlightOffIcon />
+          </BaseAnimatedButton>
+        )}
       </animated.section>
       <animated.section id="chat" style={chatContainerProps} className="chat">
         {renderMessages(messages, transitions)}

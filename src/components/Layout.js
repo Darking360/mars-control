@@ -151,6 +151,7 @@ export const CommsContainer = styled(ComponentContainer)`
   display: flex;
   flex-direction: column;
   section.contacts {
+    position: relative;
     background: lightcoral;
     padding: 1rem 0;
     display: grid;
@@ -166,6 +167,21 @@ export const CommsContainer = styled(ComponentContainer)`
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+    button.close {
+      width: 2rem;
+      height: 2rem;
+      background-color: white;
+      border-radius: 50%;
+      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 1rem;
+      bottom: -1rem;
+      cursor: pointer;
+      z-index: 8;
+    }
   }
   section.chat {
     background: lightgreen;
@@ -274,6 +290,12 @@ export const Contact = styled(AnimatedContact)`
   }
 
   img.avatar {
+    ${({ isSelected }) =>
+      isSelected &&
+      `
+border: 3px solid green;
+    `}
+    cursor: pointer;
     width: 3rem;
     height: 3rem;
     object-fit: cover;
