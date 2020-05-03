@@ -115,6 +115,12 @@ export const VisualRecordsContainer = styled(ComponentContainer)`
   overflow: hidden;
 `;
 
+export const BaseButton = styled.button`
+  background: none;
+  outline: none;
+  border: none;
+`;
+
 // Charts components =========================
 
 export const ChartSection = styled.section`
@@ -130,8 +136,15 @@ export const ChartSection = styled.section`
 // Comms components =========================
 
 export const CommsContainer = styled(ComponentContainer)`
+  overflow: hidden;
   section.contacts {
     background: lightcoral;
+    padding: 1rem 1rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
   }
   section.chat {
     background: lightgreen;
@@ -147,10 +160,7 @@ export const CommsContainer = styled(ComponentContainer)`
       border-radius: 15px;
       width: 85%;
     }
-    button {
-      background: none;
-      outline: none;
-      border: none;
+    ${BaseButton} {
       width: 5rem;
       height: 5rem;
       border-radius: 50%;
@@ -158,5 +168,53 @@ export const CommsContainer = styled(ComponentContainer)`
       justify-content: center;
       align-content: center;
     }
+  }
+`;
+
+export const Contact = styled.div`
+  height: 50%;
+  width: 50%;
+  margin-right: 5rem;
+  div.main {
+    width: 100%;
+    height: auto;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    h3,
+    p {
+      margin: 0;
+    }
+    p {
+      margin-top: 0.5rem;
+    }
+  }
+
+  img.avatar {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: -1rem;
+    left: -0.5rem;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+  }
+
+  ${BaseButton} {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 1rem;
+    right: -1.5rem;
+    background: white;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
   }
 `;
