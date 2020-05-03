@@ -139,7 +139,7 @@ export const CommsContainer = styled(ComponentContainer)`
   overflow: hidden;
   section.contacts {
     background: lightcoral;
-    padding: 1rem 1rem;
+    padding: 1rem 0;
     display: grid;
     width: 100%;
     align-items: center;
@@ -150,6 +150,9 @@ export const CommsContainer = styled(ComponentContainer)`
       `
       grid-template-columns: 25% 25% 25% 25%;
     `}
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
   }
   section.chat {
     background: lightgreen;
