@@ -1,3 +1,41 @@
+@font-face {
+  font-family: "Jura";
+  src: url("./fonts/Jura/static/Jura-Regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Jura";
+  src: url("./fonts/Jura/static/Jura-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("./fonts/Orbitron/static/Orbitron-Regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("./fonts/Orbitron/static/Orbitron-Regular.ttf");
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron";
+}
+
+span,
+p {
+  font-family: "Jura";
+}
+
 .App {
   text-align: center;
   display: flex;
