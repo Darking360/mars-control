@@ -112,7 +112,12 @@ const SolarComms = () => {
         {renderContacts(setContact, contact, avatarStyles)}
       </animated.section>
       <animated.section style={chatContainerProps} className="chat">
-        <h3>Chat</h3>
+        <div className="out-message">
+          <span>Lorem ipsum message going forward</span>
+        </div>
+        <div className="in-message">
+          <span>Lorem ipsum message going in</span>
+        </div>
       </animated.section>
       <animated.section style={inputContainerProps} className="input">
         <input type="text" />

@@ -156,6 +156,35 @@ export const CommsContainer = styled(ComponentContainer)`
   }
   section.chat {
     background: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    div {
+      border: none;
+      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+      width: 100%;
+      max-width: 60%;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      span {
+        color: black;
+      }
+    }
+    div.in-message {
+      margin-left: 2rem;
+      background: lightblue;
+      align-self: flex-end;
+      border-bottom-left-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+    div.out-message {
+      margin-right: 2rem;
+      background: lightsalmon;
+      align-self: flex-start;
+      border-bottom-right-radius: 10px;
+      border-top-right-radius: 10px;
+    }
   }
 
   section.input {
