@@ -126,7 +126,7 @@ const renderMessages = (messages, transitions) => {
       style={transitions[i].props}
       className={`${type}-message`}
     >
-      <span>{message}</span>
+      <p>{message}</p>
     </animated.div>
   ));
 };
@@ -192,6 +192,7 @@ const SolarComms = () => {
           <input
             type="text"
             name="message"
+            placeholder="Write a message"
             value={message}
             onChange={handleChange}
           />

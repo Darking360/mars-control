@@ -67,8 +67,9 @@ export const AnimatedSolarContainer = (props) => {
 export const ComponentContainer = styled.div`
   width: 45vw;
   height: 45vh;
+  margin: 1rem;
   border-radius: 15px;
-  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+  background-color: #323865;
 `;
 
 export const SolarButton = styled(AnimatedSolarButton)`
@@ -170,13 +171,13 @@ export const CommsContainer = styled(ComponentContainer)`
   flex-direction: column;
   section.contacts {
     position: relative;
-    background: lightcoral;
     padding: 1rem 0;
     display: grid;
     width: 100%;
     align-items: center;
     justify-items: center;
     grid-template-columns: 50% 50%;
+    z-index: 10;
     ${({ contact }) =>
       contact &&
       `
@@ -184,7 +185,7 @@ export const CommsContainer = styled(ComponentContainer)`
     `}
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 5px 22px rgba(0, 229, 117, 1), 0 5px 12px rgba(0, 229, 117, 1);
     button.close {
       width: 2rem;
       height: 2rem;
@@ -202,11 +203,23 @@ export const CommsContainer = styled(ComponentContainer)`
     }
   }
   section.chat {
-    background: lightgreen;
     display: flex;
     flex-direction: column;
     overflow: auto;
     margin-top: auto;
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #00e676;
+    }
     div {
       border: none;
       box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.22);
@@ -218,30 +231,52 @@ export const CommsContainer = styled(ComponentContainer)`
         color: black;
       }
     }
+    div.in-message,
+    div.out-message {
+      background-color: #49529e;
+      p {
+        color: white;
+        font-weight: bold;
+        line-height: 1.5rem;
+        padding: 1rem;
+        margin: 0;
+      }
+    }
     div.in-message {
       margin-left: 2rem;
-      background: lightblue;
       align-self: flex-end;
       border-bottom-left-radius: 10px;
       border-top-left-radius: 10px;
+      p {
+        text-align: right;
+      }
     }
     div.out-message {
       margin-right: 2rem;
-      background: lightsalmon;
       align-self: flex-start;
       border-bottom-right-radius: 10px;
       border-top-right-radius: 10px;
+      p {
+        text-align: left;
+      }
     }
   }
 
   section.input {
+    ${({ contact }) =>
+      contact &&
+      `
+      padding: 0.5rem 1rem;
+    `}
     form {
-      height: 100%;
-      background: lightgoldenrodyellow;
+      background-color: #49529e;
+      border-radius: 30px;
+      height: 85%;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      box-shadow: 0 1px 5px rgba(0, 229, 117, 1), 0 3px 5px rgba(0, 229, 117, 1);
       input {
         background: none;
         outline: none;
@@ -251,6 +286,12 @@ export const CommsContainer = styled(ComponentContainer)`
         height: 50%;
         padding: 0 1rem;
         margin-left: 1rem;
+        color: white;
+        font-size: 16px;
+        border: none;
+        ::placeholder {
+          color: white;
+        }
       }
       ${SendButton} {
         width: 3rem;
@@ -259,7 +300,7 @@ export const CommsContainer = styled(ComponentContainer)`
         display: flex;
         justify-content: center;
         align-content: center;
-        background: green;
+        background: #00e676;
         color: white;
         box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3),
           0 5px 12px rgba(0, 0, 0, 0.22);

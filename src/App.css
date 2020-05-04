@@ -29,10 +29,19 @@ h4,
 h5,
 h6 {
   font-family: "Orbitron";
+  color: #00e676;
 }
 
 span,
 p {
+  font-family: "Jura";
+}
+
+body {
+  background-image: url("./images/background.jpg");
+}
+
+input {
   font-family: "Jura";
 }
 
