@@ -6,6 +6,7 @@ const expandedStyles = {
   width: "100%",
   height: "100%",
   transform: "translate3d(0px,0px,0)",
+  padding: "0rem",
   config: { mass: 5, tension: 800, friction: 150 },
 };
 
@@ -13,6 +14,7 @@ const minifiedStyles = {
   width: "30%",
   height: "30%",
   transform: "translate3d(0px,0px,0)",
+  padding: ".2rem",
   config: { mass: 5, tension: 800, friction: 150 },
 };
 
@@ -79,6 +81,13 @@ export const SolarButton = styled(AnimatedSolarButton)`
   overflow: hidden;
   padding: 0;
   display: block;
+  border: none;
+  cursor: pointer;
+  ${({ expanded }) =>
+    expanded &&
+    `
+    border-top-left-radius: 0;
+  `}
 `;
 
 export const SolarImage = styled.img`
@@ -89,11 +98,18 @@ export const SolarImage = styled.img`
 
 export const VisualRecordsContainer = styled(ComponentContainer)`
   display: flex;
-  flex: 1 0 21%;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   overflow: hidden;
+  section.solar-images {
+    height: 100%;
+    flex: 1 0 21%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 export const BaseButton = styled.button`
@@ -122,7 +138,7 @@ export const AnimatedHalfContainer = styled(AnimatedSolarContainer)`
   }
   ${BaseButton} {
     position: absolute;
-    top: 1rem;
+    top: 0.5rem;
     right: 1rem;
   }
 `;

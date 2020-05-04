@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { VisualRecordsContainer } from "../components/Layout";
 import SolarImageRecord from "../components/SolarImageRecord";
-import { useSpring, animated } from "react-spring";
+import SolarTitle from "../components/SolarTitle";
 
 const solarImages = [
   {
@@ -85,7 +85,10 @@ const SolarVisualRecords = () => {
   const [active, setActive] = useState(null);
   return (
     <VisualRecordsContainer>
-      {renderSolarImages(active, setActive)}
+      <SolarTitle title="Image Records" />
+      <section className="solar-images">
+        {renderSolarImages(active, setActive)}
+      </section>
     </VisualRecordsContainer>
   );
 };
