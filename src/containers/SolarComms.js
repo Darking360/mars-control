@@ -8,12 +8,14 @@ import {
   Contact,
   SendButton,
   BaseAnimatedButton,
+  SpeakingWith,
 } from "../components/Layout";
+import SolarTitle from "../components/SolarTitle";
 
-const contactsExpanded = { height: "100%" };
-const contactsMinified = { height: "20%" };
+const contactsExpanded = { height: "88%" };
+const contactsMinified = { height: "30%" };
 
-const chatExpanded = { height: "60%" };
+const chatExpanded = { height: "65%" };
 const chatMinified = { height: "0%" };
 
 const inputExpanded = { height: "20%" };
@@ -173,15 +175,16 @@ const SolarComms = () => {
 
   return (
     <CommsContainer contact={contact}>
+      <SolarTitle open={!contact} title="Solar Communications" />
       <animated.section style={contactsContainerProps} className="contacts">
-        {renderContacts(setContact, contact, avatarStyles)}
+        <section className="grid">
+          {renderContacts(setContact, contact, avatarStyles)}
+        </section>
         {contact && (
-          <BaseAnimatedButton
-            onClick={() => setContact(null)}
-            className="close"
-          >
-            <HighlightOffIcon />
-          </BaseAnimatedButton>
+          <SpeakingWith>
+            <span>Speaking with: </span>
+            <span> {contact.name}</span>
+          </SpeakingWith>
         )}
       </animated.section>
       <animated.section id="chat" style={chatContainerProps} className="chat">

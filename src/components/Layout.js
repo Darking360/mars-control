@@ -211,27 +211,58 @@ export const SendButton = styled(BaseButton)`
 `}
 `;
 
+export const SpeakingWith = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 0.5rem;
+  padding-top: 0;
+  span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  span:first-child {
+    color: #00e676;
+    font-family: "Orbitron";
+  }
+  span:last-child {
+    color: white;
+  }
+  box-shadow: 0 1px 5px rgba(0, 229, 117, 1), 0 3px 5px rgba(0, 229, 117, 1);
+  background-color: #323865;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+`;
+
 export const CommsContainer = styled(ComponentContainer)`
   overflow: hidden;
   display: flex;
   flex-direction: column;
   section.contacts {
-    position: relative;
-    padding: 1rem 0;
-    display: grid;
-    width: 100%;
-    align-items: center;
-    justify-items: center;
-    grid-template-columns: 50% 50%;
-    z-index: 10;
-    ${({ contact }) =>
-      contact &&
-      `
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    section.grid {
+      background-color: #323865;
+      height: 100%;
+      position: relative;
+      padding: 1rem 0;
+      display: grid;
+      width: 100%;
+      align-items: center;
+      justify-items: center;
+      z-index: 10;
+      grid-template-columns: 50% 50%;
+      ${({ contact }) =>
+        contact &&
+        `
       grid-template-columns: 25% 25% 25% 25%;
+      height: 70%;
     `}
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    box-shadow: 0 5px 22px rgba(0, 229, 117, 1), 0 5px 12px rgba(0, 229, 117, 1);
+    }
+
     button.close {
       width: 2rem;
       height: 2rem;
@@ -284,7 +315,7 @@ export const CommsContainer = styled(ComponentContainer)`
         color: white;
         font-weight: bold;
         line-height: 1.5rem;
-        padding: 1rem;
+        padding: 0 1rem;
         margin: 0;
       }
     }
