@@ -195,6 +195,7 @@ const SolarComms = () => {
             placeholder="Write a message"
             value={message}
             onChange={handleChange}
+            autoComplete="off"
           />
           <SendButton type="submit" onClick={submitMessage} disabled={!message}>
             <SendIcon />

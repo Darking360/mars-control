@@ -1,6 +1,7 @@
 import React from "react";
 import { Area } from "recharts";
 import BaseSolarVisualizer from "../components/BaseSolarVisualizer";
+import { CustomMessage } from "../components/Layout";
 
 const SolarPathfinder = () => {
   const types = [
@@ -36,7 +37,13 @@ const SolarPathfinder = () => {
     options,
   };
 
-  return <BaseSolarVisualizer {...visualizerProps} />;
+  return (
+    <BaseSolarVisualizer
+      title="Pathfinder Chart Data"
+      {...visualizerProps}
+      custom={<CustomMessage>Temperatures in celsius</CustomMessage>}
+    />
+  );
 };
 
 export default SolarPathfinder;

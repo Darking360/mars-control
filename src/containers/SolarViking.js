@@ -57,7 +57,7 @@ const SolarPathfinder = () => {
     options,
   };
 
-  return <BaseSolarVisualizer {...visualizerProps} />;
+  return <BaseSolarVisualizer title="Viking Chart Data" {...visualizerProps} />;
 };
 
 export default SolarPathfinder;

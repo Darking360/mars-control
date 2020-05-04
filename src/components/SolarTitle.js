@@ -7,6 +7,9 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  overflow: hidden;
   h3 {
     background: white;
     width: 100%;

@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import * as d3 from "d3-fetch";
 import SolarChartVisualizer from "./SolarChartVisualizer";
 
-const SolarPathFinderTemperatures = ({ adapter, url, types, options }) => {
+const SolarPathFinderTemperatures = ({
+  adapter,
+  url,
+  types,
+  options,
+  title,
+  custom,
+}) => {
   const [initialData, setInitialData] = useState(null);
   const [data, setData] = useState([]);
   const [heapCount, setHeap] = useState(0);
@@ -40,6 +47,8 @@ const SolarPathFinderTemperatures = ({ adapter, url, types, options }) => {
     data,
     types,
     options,
+    title,
+    custom,
   };
 
   return <SolarChartVisualizer {...chartProps} />;

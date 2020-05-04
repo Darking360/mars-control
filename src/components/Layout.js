@@ -136,10 +136,28 @@ export const AnimatedHalfContainer = styled(AnimatedSolarContainer)`
     background-color: white;
     padding: 0.5em 0;
   }
+  p {
+    margin: 0 1rem;
+    color: white;
+    line-height: 1.5rem;
+  }
   ${BaseButton} {
     position: absolute;
     top: 0.5rem;
     right: 1rem;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #00e676;
   }
 `;
 
@@ -160,11 +178,23 @@ export const FullAnimatedContainer = styled(AnimatedSolarContainer)`
 
 export const ChartSection = styled.section`
   width: 100%;
-  height: 100%;
+  height: 85%;
   div.recharts-wrapper,
   svg.recharts-surface {
     width: 100% !important;
     height: 95% !important;
+  }
+`;
+
+export const CustomMessage = styled.p`
+  margin: 0.5rem 0;
+  color: white;
+  font-weight: bold;
+`;
+
+export const ChartVisualizerContainer = styled(ComponentContainer)`
+  section.selector {
+    margin-top: 1rem;
   }
 `;
 

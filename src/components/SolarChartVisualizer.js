@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import {
+  AreaChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import { ComponentContainer, ChartSection } from "./Layout";
+import { ChartVisualizerContainer, ChartSection } from "./Layout";
+import SolarTitle from "./SolarTitle";
 
-const SolarChartVisualizer = ({ types, options, data }) => {
+const SolarChartVisualizer = ({ types, options, data, title, custom }) => {
   const [type, setType] = useState(1);
 
   const handleVisualizationChange = ({ target: { value } }) => {
@@ -23,34 +31,36 @@ const SolarChartVisualizer = ({ types, options, data }) => {
   };
 
   return (
-    <ComponentContainer>
+    <ChartVisualizerContainer>
+      <SolarTitle title={title} />
+      {custom && custom}
       {options.length > 0 && (
-        <section>
+        <section className="selector">
           <Select value={type} onChange={handleVisualizationChange}>
             {renderOptions()}
           </Select>
         </section>
       )}
       <ChartSection>
-        <AreaChart
-          width={500}
-          height={400}
-          data={data}
-          margin={{
-            top: 10,
-            right: 30,
-            left: 0,
-            bottom: 0,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="Sol" />
-          <YAxis domain={["auto", "auto"]} />
-          <Tooltip />
-          {renderChartData()}
-        </AreaChart>
+        <ResponsiveContainer>
+          <AreaChart
+            data={data}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="Sol" />
+            <YAxis domain={["auto", "auto"]} />
+            <Tooltip />
+            {renderChartData()}
+          </AreaChart>
+        </ResponsiveContainer>
       </ChartSection>
-    </ComponentContainer>
+    </ChartVisualizerContainer>
   );
 };
 
