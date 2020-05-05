@@ -9,15 +9,15 @@ const SolarPathfinder = () => {
         type="monotone"
         dataKey="wind_m_sec"
         stackId="1"
-        stroke="#8884d8"
-        fill="#8884d8"
+        stroke="#ff3d00"
+        fill="#ff3d00"
       />,
       <Area
         type="monotone"
         dataKey="wind_deg."
         stackId="1"
-        stroke="#82ca9d"
-        fill="#82ca9d"
+        stroke="#00e5ff"
+        fill="#00e5ff"
       />,
     ],
     "2": [
@@ -25,22 +25,22 @@ const SolarPathfinder = () => {
         type="monotone"
         dataKey="pressure_mb"
         stackId="1"
-        stroke="#8884d8"
-        fill="#8884d8"
+        stroke="#64dd17"
+        fill="#64dd17"
       />,
       <Area
         type="monotone"
         dataKey="temp_F"
         stackId="1"
-        stroke="#82ca9d"
-        fill="#82ca9d"
+        stroke="#00e5ff"
+        fill="#00e5ff"
       />,
       <Area
         type="monotone"
         dataKey="temp_C"
         stackId="1"
-        stroke="#ffc658"
-        fill="#ffc658"
+        stroke="#ff3d00"
+        fill="#ff3d00"
       />,
     ],
   };

@@ -181,7 +181,6 @@ export const ChartSection = styled.section`
   height: 85%;
   div.recharts-wrapper,
   svg.recharts-surface {
-    width: 100% !important;
     height: 95% !important;
   }
 `;
@@ -195,6 +194,12 @@ export const CustomMessage = styled.p`
 export const ChartVisualizerContainer = styled(ComponentContainer)`
   section.selector {
     margin-top: 1rem;
+    > div {
+      color: white;
+      svg {
+        color: white;
+      }
+    }
   }
 `;
 

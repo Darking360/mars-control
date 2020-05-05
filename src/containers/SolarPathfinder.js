@@ -9,22 +9,22 @@ const SolarPathfinder = () => {
       type="monotone"
       dataKey="T1 celsius"
       stackId="1"
-      stroke="#8884d8"
-      fill="#8884d8"
+      stroke="#ff3d00"
+      fill="#ff3d00"
     />,
     <Area
       type="monotone"
       dataKey="T2 celsius"
       stackId="1"
-      stroke="#82ca9d"
-      fill="#82ca9d"
+      stroke="#00e5ff"
+      fill="#00e5ff"
     />,
     <Area
       type="monotone"
       dataKey="T3 celsius"
       stackId="1"
-      stroke="#ffc658"
-      fill="#ffc658"
+      stroke="#64dd17"
+      fill="#64dd17"
     />,
   ];
 
