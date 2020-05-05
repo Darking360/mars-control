@@ -15,14 +15,20 @@ const minifiedStyles = {
   height: "30%",
   transform: "translate3d(0px,0px,0)",
   padding: ".2rem",
+  display: "flex",
   config: { mass: 5, tension: 800, friction: 150 },
 };
 
-const offMinified = {
+const offMinifiedButton = {
   width: "0%",
   height: "0%",
   transform: "translate3d(0px,1000px,0)",
   config: { mass: 5, tension: 800, friction: 150 },
+};
+
+const offMinifiedContainer = {
+  ...offMinifiedButton,
+  display: "flex",
 };
 
 const AnimatedSolarButton = (props) => {
@@ -31,7 +37,7 @@ const AnimatedSolarButton = (props) => {
     return expanded
       ? { ...expandedStyles, width: "50%" }
       : active
-      ? offMinified
+      ? offMinifiedButton
       : expandedStyles;
   };
   const styledProps = useSpring(getStyles());
@@ -55,11 +61,14 @@ export const AnimatedSolarContainer = (props) => {
   const { active, expanded } = props;
   const getStyles = () => {
     return expanded
-      ? { ...expandedStyles, width: props.customWidth || "100%" }
+      ? {
+          ...expandedStyles,
+          width: props.customWidth || "100%",
+        }
       : active
-      ? offMinified
+      ? { ...offMinifiedContainer, display: "none" }
       : props.customWidth
-      ? offMinified
+      ? { ...offMinifiedContainer, display: "block" }
       : minifiedStyles;
   };
   const styledProps = useSpring(getStyles());

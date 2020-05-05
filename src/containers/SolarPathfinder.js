@@ -3,7 +3,7 @@ import { Area } from "recharts";
 import BaseSolarVisualizer from "../components/BaseSolarVisualizer";
 import { CustomMessage } from "../components/Layout";
 
-const SolarPathfinder = () => {
+const SolarPathfinder = ({ day }) => {
   const types = [
     <Area
       type="monotone"
@@ -35,6 +35,7 @@ const SolarPathfinder = () => {
     url: "./data/pathfinder_temperatures.tsv",
     types,
     options,
+    day,
   };
 
   return (

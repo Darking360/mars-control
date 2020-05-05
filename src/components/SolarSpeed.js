@@ -2,11 +2,15 @@ import React from "react";
 import Slider from "@material-ui/core/Slider";
 import { SolarSpeedContainer } from "./Layout";
 
-const SolarSpeed = () => {
+const SolarSpeed = ({ time, setTime }) => {
+  const handleChange = (_, newTime) => {
+    setTime(newTime);
+  };
+
   return (
     <SolarSpeedContainer>
       <div className="indicators">
-        <span>Current speed: 60 seconds for 1 solar day</span>
+        <span>Current speed: {time} seconds for 1 solar day</span>
       </div>
       <Slider
         defaultValue={30}
@@ -16,6 +20,8 @@ const SolarSpeed = () => {
         marks
         min={10}
         max={60}
+        value={time}
+        onChange={handleChange}
       />
     </SolarSpeedContainer>
   );

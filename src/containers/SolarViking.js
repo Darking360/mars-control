@@ -2,7 +2,7 @@ import React from "react";
 import { Area } from "recharts";
 import BaseSolarVisualizer from "../components/BaseSolarVisualizer";
 
-const SolarPathfinder = () => {
+const SolarPathfinder = ({ day }) => {
   const types = {
     "1": [
       <Area
@@ -55,6 +55,7 @@ const SolarPathfinder = () => {
     url: "./data/viking_lander_data.csv",
     types,
     options,
+    day,
   };
 
   return <BaseSolarVisualizer title="Viking Chart Data" {...visualizerProps} />;

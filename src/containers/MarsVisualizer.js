@@ -3,7 +3,7 @@ import { MarsContainer } from "../components/Layout";
 import Mars from "../components/Mars";
 import SolarTitle from "../components/SolarTitle";
 
-const MarsVisualizer = () => {
+const MarsVisualizer = ({ day }) => {
   return (
     <MarsContainer>
       <SolarTitle title="Mars Visual" />
@@ -11,7 +11,7 @@ const MarsVisualizer = () => {
         <span>Solar day:</span>
         <span>120</span>
       </section>
-      <Mars />
+      <Mars day={day} />
     </MarsContainer>
   );
 };

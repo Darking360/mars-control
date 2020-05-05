@@ -82,13 +82,13 @@ const StyledMars = styled.div`
     opacity: 0.4;
     background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/mars-bg-min.jpg")
       0% 0% / auto 100% repeat-x;
-    animation: ${rotate} 20s linear infinite;
+    transform: translate3d(-${({ day }) => day}%, 0, 0);
   }
 `;
 
-const Mars = () => {
+const Mars = ({ day }) => {
   return (
-    <StyledMars>
+    <StyledMars day={day}>
       <div className="planet">
         <div class="mars">
           <div class="img-map"></div>

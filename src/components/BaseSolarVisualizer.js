@@ -9,6 +9,7 @@ const SolarPathFinderTemperatures = ({
   options,
   title,
   custom,
+  day,
 }) => {
   const [initialData, setInitialData] = useState(null);
   const [data, setData] = useState([]);
@@ -24,24 +25,22 @@ const SolarPathFinderTemperatures = ({
           setHeap(heapCount + 100);
         }
       } catch (error) {
-        // Handle error
+        alert(
+          "Something went wrong reading the data, please reload the app and check again."
+        );
       }
     };
     fetchData();
   }, []);
 
   useEffect(() => {
-    let interval;
     if (initialData) {
-      interval = setInterval(() => {
-        if (heapCount <= initialData.length) {
-          setData(initialData.slice(heapCount, heapCount + 100));
-          setHeap(heapCount + 100);
-        }
-      }, 600000);
+      if (heapCount <= initialData.length) {
+        setData(initialData.slice(heapCount, heapCount + 100));
+        setHeap(heapCount + 100);
+      }
     }
-    return () => clearInterval(interval);
-  });
+  }, [day]);
 
   const chartProps = {
     data,
