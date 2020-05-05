@@ -18,7 +18,7 @@ const SolarSpeed = ({ time, setTime }) => {
         valueLabelDisplay="auto"
         step={1}
         marks
-        min={10}
+        min={1}
         max={60}
         value={time}
         onChange={handleChange}
