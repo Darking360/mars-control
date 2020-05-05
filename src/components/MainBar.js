@@ -1,11 +1,11 @@
 import React from "react";
 import { StyledAppBar } from "./Layout";
 
-const MainBar = ({ day }) => {
+const MainBar = ({ day, leftComponent }) => {
   return (
     <StyledAppBar position="static">
       <div className="content">
-        <div>Toggle on button</div>
+        {leftComponent && leftComponent}
         <section className="solar-indicator">
           <span>Solar day: {day}</span>
         </section>

@@ -3,6 +3,52 @@ import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import { removeWarningKeys } from "../utils";
 
+// Main components ============================
+
+export const ToggleAppButton = styled.button`
+  background-color: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #00e676;
+  font-size: 18px;
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
+`;
+
+export const AnimatedOnContainer = styled(animated.section)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: black;
+  overflow: hidden;
+  flex-direction: column;
+  p {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  ${ToggleAppButton} {
+    margin: 1rem 0;
+  }
+`;
+
+export const AnimatedSimpleSection = styled(animated.section)``;
+
+export const offStyles = { width: "100%", height: "0%" };
+export const onStyles = { width: "100%", height: "100%" };
+
 // Main App component ====================
 
 export const App = styled.div`
@@ -546,6 +592,14 @@ export const MarsContainer = styled(ComponentContainer)`
 export const StyledAppBar = styled.header`
   width: 100%;
   background-color: #00e676;
+  ${ToggleAppButton} {
+    width: 3rem;
+    height: 3rem;
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
   div.content {
     display: flex;
     flex-direction: row;
