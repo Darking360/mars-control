@@ -6,6 +6,7 @@ import SolarViking from "./containers/SolarViking";
 import SolarComms from "./containers/SolarComms";
 import MarsVisualizer from "./containers/MarsVisualizer";
 import MainBar from "./components/MainBar";
+import SolarSpeed from "./components/SolarSpeed";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./config";
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <MainBar />
+      <SolarSpeed />
       <div className="App">
         <SolarVisualRecords />
         <SolarPathfinder />

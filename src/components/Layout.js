@@ -519,3 +519,23 @@ export const StyledAppBar = styled.header`
     }
   }
 `;
+
+// SolarSpeed components =======================
+
+export const SolarSpeedContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0.5rem auto;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  div.indicators {
+    margin: 0.5rem 0;
+  }
+  > span > span:last-child > span > span {
+    color: white;
+  }
+`;
