@@ -22,8 +22,8 @@ const SolarPathFinderTemperatures = ({
         if (!initialData) {
           let temporalData = await d3[adapter](url);
           setInitialData(temporalData);
-          setData(temporalData.slice(heapCount, heapCount + 100));
-          setHeap(heapCount + 100);
+          setData(temporalData.slice(heapCount, heapCount + 30));
+          setHeap(heapCount + 30);
         }
       } catch (error) {
         alert(
@@ -37,8 +37,8 @@ const SolarPathFinderTemperatures = ({
   useEffect(() => {
     if (initialData && previousDayRef.current !== day) {
       if (heapCount <= initialData.length) {
-        setData(initialData.slice(heapCount, heapCount + 100));
-        setHeap(heapCount + 100);
+        setData(initialData.slice(heapCount, heapCount + 30));
+        setHeap(heapCount + 30);
       }
     }
   }, [day, heapCount, initialData]);
