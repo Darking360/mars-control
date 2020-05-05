@@ -1,16 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Tooltip from "@material-ui/core/Tooltip";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useSpring, animated, config } from "react-spring";
-import { withStyles } from "@material-ui/core/styles";
-
-const CustomTooltip = withStyles((theme) => ({
-  tooltip: {
-    boxShadow: theme.shadows[1],
-    fontSize: "16px",
-  },
-}))(Tooltip);
+import { CustomTooltip } from "./Layout";
 
 const TitleContainer = styled(animated.div)`
   display: flex;

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
+import Tooltip from "@material-ui/core/Tooltip";
+import { withStyles } from "@material-ui/core/styles";
 import { removeWarningKeys } from "../utils";
 
 // Main App component ====================
@@ -12,6 +14,15 @@ export const App = styled.div`
   margin: 0 auto;
   max-width: 1200px;
 `;
+
+// Solar title components ===================
+
+export const CustomTooltip = withStyles((theme) => ({
+  tooltip: {
+    boxShadow: theme.shadows[1],
+    fontSize: "16px",
+  },
+}))(Tooltip);
 
 // Image Records visualizer components ====================
 
@@ -119,11 +130,25 @@ export const SolarButton = styled(AnimatedSolarButton)`
   display: block;
   border: none;
   cursor: pointer;
+  position: relative;
   ${({ expanded }) =>
     expanded &&
     `
     border-top-left-radius: 0;
   `}
+`;
+
+export const SolarVisualIndicator = styled.div`
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 5%;
+  right: 5%;
 `;
 
 export const SolarImage = styled.img`
