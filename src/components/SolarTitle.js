@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import Tooltip from "@material-ui/core/Tooltip";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useSpring, animated, config } from "react-spring";
+import { withStyles } from "@material-ui/core/styles";
+
+const CustomTooltip = withStyles((theme) => ({
+  tooltip: {
+    boxShadow: theme.shadows[1],
+    fontSize: "16px",
+  },
+}))(Tooltip);
 
 const TitleContainer = styled(animated.div)`
   display: flex;
@@ -9,21 +19,32 @@ const TitleContainer = styled(animated.div)`
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   overflow: hidden;
+  background: white;
   h3 {
-    background: white;
     width: 100%;
     padding: 1rem 0;
+  }
+  svg {
+    margin-right: 1rem;
   }
 `;
 
 const opened = { height: "12%", width: "100%", config: config.stiff };
 const closed = { height: "0%", width: "0%", config: config.stiff };
 
-const SolarTitle = ({ title, open = true }) => {
+const SolarTitle = ({ title, open = true, respond = false }) => {
   const titleStyles = useSpring(open ? opened : closed);
   return (
     <TitleContainer style={titleStyles}>
       <h3>{title}</h3>
+      {respond && (
+        <CustomTooltip
+          arrow
+          title="This component responds to Solar day changes, try increasing it on the top bar."
+        >
+          <VisibilityIcon />
+        </CustomTooltip>
+      )}
     </TitleContainer>
   );
 };

@@ -212,6 +212,14 @@ export const FullAnimatedContainer = styled(AnimatedSolarContainer)`
 
 // Charts components =========================
 
+export const LoaderSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70%;
+`;
+
 export const ChartSection = styled.section`
   width: 100%;
   height: 85%;

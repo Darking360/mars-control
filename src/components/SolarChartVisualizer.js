@@ -9,7 +9,12 @@ import {
 } from "recharts";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import { ChartVisualizerContainer, ChartSection } from "./Layout";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import {
+  ChartVisualizerContainer,
+  ChartSection,
+  LoaderSection,
+} from "./Layout";
 import SolarTitle from "./SolarTitle";
 
 const SolarChartVisualizer = ({ types, options, data, title, custom }) => {
@@ -34,7 +39,7 @@ const SolarChartVisualizer = ({ types, options, data, title, custom }) => {
 
   return (
     <ChartVisualizerContainer>
-      <SolarTitle title={title} />
+      <SolarTitle title={title} respond />
       {custom && custom}
       {options.length > 0 && (
         <section className="selector">
@@ -43,25 +48,31 @@ const SolarChartVisualizer = ({ types, options, data, title, custom }) => {
           </Select>
         </section>
       )}
-      <ChartSection>
-        <ResponsiveContainer>
-          <AreaChart
-            data={data}
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid stroke="#00e676" strokeDasharray="3 3" />
-            <XAxis stroke="#00e676" dataKey="Sol" />
-            <YAxis stroke="#00e676" domain={["auto", "auto"]} />
-            <Tooltip />
-            {renderChartData()}
-          </AreaChart>
-        </ResponsiveContainer>
-      </ChartSection>
+      {data.length > 0 ? (
+        <ChartSection>
+          <ResponsiveContainer>
+            <AreaChart
+              data={data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <CartesianGrid stroke="#00e676" strokeDasharray="3 3" />
+              <XAxis stroke="#00e676" dataKey="Sol" />
+              <YAxis stroke="#00e676" domain={["auto", "auto"]} />
+              <Tooltip />
+              {renderChartData()}
+            </AreaChart>
+          </ResponsiveContainer>
+        </ChartSection>
+      ) : (
+        <LoaderSection>
+          <CircularProgress color="primary" />
+        </LoaderSection>
+      )}
     </ChartVisualizerContainer>
   );
 };
