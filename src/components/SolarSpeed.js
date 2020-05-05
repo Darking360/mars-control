@@ -16,7 +16,7 @@ const SolarSpeed = ({ time, setTime }) => {
         defaultValue={30}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
-        step={5}
+        step={1}
         marks
         min={10}
         max={60}
