@@ -9,7 +9,7 @@ const MarsVisualizer = ({ day }) => {
       <SolarTitle title="Mars Visual" />
       <section className="solar-day">
         <span>Solar day:</span>
-        <span>120</span>
+        <span>{day}</span>
       </section>
       <Mars day={day} />
     </MarsContainer>

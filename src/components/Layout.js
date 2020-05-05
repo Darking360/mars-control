@@ -3,6 +3,16 @@ import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import { removeWarningKeys } from "../utils";
 
+// Main App component ====================
+
+export const App = styled.div`
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+`;
+
 // Image Records visualizer components ====================
 
 const expandedStyles = {
@@ -93,7 +103,7 @@ export const AnimatedSolarContainer = (props) => {
 };
 
 export const ComponentContainer = styled.div`
-  width: 45vw;
+  width: 45%;
   height: 45vh;
   margin: 1rem;
   border-radius: 15px;
@@ -517,6 +527,7 @@ export const MarsContainer = styled(ComponentContainer)`
     }
     span:last-child {
       color: white;
+      margin-left: 0.5rem;
     }
   }
 `;
@@ -524,34 +535,39 @@ export const MarsContainer = styled(ComponentContainer)`
 // MainBar components =======================
 
 export const StyledAppBar = styled.header`
-  display: flex;
-  flex-direction: row;
+  width: 100%;
   background-color: #00e676;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  section.solar-indicator {
+  div.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
     color: white;
     font-weight: bold;
-    > span {
-      font-family: "Orbitron";
+    font-size: 18px;
+    max-width: 1200px;
+    margin: 0 auto;
+    section.solar-indicator {
+      color: white;
+      font-weight: bold;
+      > span {
+        font-family: "Orbitron";
+      }
     }
-  }
-  section.avatar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    > * {
-      margin: 0 0.5rem;
-    }
-    img {
-      width: 3rem;
-      height: 3rem;
-      object-fit: cover;
-      border-radius: 50%;
+    section.avatar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      > * {
+        margin: 0 0.5rem;
+      }
+      img {
+        width: 3rem;
+        height: 3rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
     }
   }
 `;

@@ -6,6 +6,7 @@ import SolarComms from "./SolarComms";
 import MarsVisualizer from "./MarsVisualizer";
 import MainBar from "../components/MainBar";
 import SolarSpeed from "../components/SolarSpeed";
+import { App } from "../components/Layout";
 
 const MainContainer = () => {
   const [day, setTheDay] = useState(1);
@@ -26,13 +27,13 @@ const MainContainer = () => {
     <>
       <MainBar {...readProps} />
       <SolarSpeed {...writeProps} />
-      <div className="App">
+      <App>
         <SolarVisualRecords />
         <SolarPathfinder {...readProps} />
         <SolarViking {...readProps} />
         <SolarComms />
         <MarsVisualizer {...readProps} />
-      </div>
+      </App>
     </>
   );
 };
