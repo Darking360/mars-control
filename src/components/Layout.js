@@ -380,6 +380,7 @@ export const CommsContainer = styled(ComponentContainer)`
     z-index: 12;
     display: flex;
     flex-direction: column;
+    position: relative;
     section.grid {
       background-color: #323865;
       height: 100%;
@@ -400,6 +401,7 @@ export const CommsContainer = styled(ComponentContainer)`
     }
 
     button.close {
+      border: none;
       width: 2rem;
       height: 2rem;
       background-color: white;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated, config } from "react-spring";
 import CreateIcon from "@material-ui/icons/Create";
 import SendIcon from "@material-ui/icons/Send";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import {
   CommsContainer,
   Contact,
@@ -185,6 +186,9 @@ const SolarComms = () => {
             <span> {contact.name}</span>
           </SpeakingWith>
         )}
+        <button onClick={() => setContact(null)} className="close">
+          <HighlightOffIcon />
+        </button>
       </animated.section>
       <animated.section id="chat" style={chatContainerProps} className="chat">
         {renderMessages(messages, transitions)}
