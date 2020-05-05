@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3-fetch";
 import SolarChartVisualizer from "./SolarChartVisualizer";
 
@@ -14,6 +14,7 @@ const SolarPathFinderTemperatures = ({
   const [initialData, setInitialData] = useState(null);
   const [data, setData] = useState([]);
   const [heapCount, setHeap] = useState(0);
+  const previousDayRef = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,16 +32,20 @@ const SolarPathFinderTemperatures = ({
       }
     };
     fetchData();
-  }, [initialData, heapCount, adapter, url]);
+  }, [heapCount, adapter, url, initialData]);
 
   useEffect(() => {
-    if (initialData) {
+    if (initialData && previousDayRef.current !== day) {
       if (heapCount <= initialData.length) {
         setData(initialData.slice(heapCount, heapCount + 100));
         setHeap(heapCount + 100);
       }
     }
   }, [day, heapCount, initialData]);
+
+  useEffect(() => {
+    previousDayRef.current = day;
+  }, [day]);
 
   const chartProps = {
     data,
