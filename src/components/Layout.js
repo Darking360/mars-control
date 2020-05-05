@@ -61,7 +61,22 @@ export const AnimatedOnContainer = styled(animated.section)`
   }
 `;
 
-export const AnimatedSimpleSection = styled(animated.section)``;
+export const AnimatedSimpleSection = styled(animated.section)`
+  overflow-x: hidden;
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #00e676;
+  }
+`;
 
 export const offStyles = { width: "100%", height: "0%" };
 export const onStyles = { width: "100%", height: "100%" };
@@ -634,6 +649,9 @@ export const MarsContainer = styled(ComponentContainer)`
 export const StyledAppBar = styled.header`
   width: 100%;
   background-color: #00e676;
+  position: sticky;
+  top: 0;
+  z-index: 20;
   ${ToggleAppButton} {
     width: 3rem;
     height: 3rem;
