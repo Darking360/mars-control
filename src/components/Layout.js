@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import { removeWarningKeys } from "../utils";
 
+// Image Records visualizer components ====================
+
 const expandedStyles = {
   width: "100%",
   height: "100%",
