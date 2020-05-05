@@ -484,3 +484,38 @@ export const MarsContainer = styled(ComponentContainer)`
     }
   }
 `;
+
+// MainBar components =======================
+
+export const StyledAppBar = styled.header`
+  display: flex;
+  flex-direction: row;
+  background-color: #00e676;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  section.solar-indicator {
+    color: white;
+    font-weight: bold;
+    > span {
+      font-family: "Orbitron";
+    }
+  }
+  section.avatar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    > * {
+      margin: 0 0.5rem;
+    }
+    img {
+      width: 3rem;
+      height: 3rem;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+`;
