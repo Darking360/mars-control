@@ -6,7 +6,7 @@ import SolarTitle from "../components/SolarTitle";
 const MarsVisualizer = ({ day }) => {
   return (
     <MarsContainer>
-      <SolarTitle title="Mars Visual" />
+      <SolarTitle title="Mars Visual" respond />
       <section className="solar-day">
         <span>Solar day:</span>
         <span>{day}</span>
