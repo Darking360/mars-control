@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   AreaChart,
   XAxis,
@@ -26,7 +26,9 @@ const SolarChartVisualizer = ({ types, options, data, title, custom }) => {
 
   const renderOptions = () => {
     return options.map(({ value, name }) => (
-      <MenuItem value={value}>{name}</MenuItem>
+      <MenuItem key={name} value={value}>
+        {name}
+      </MenuItem>
     ));
   };
 

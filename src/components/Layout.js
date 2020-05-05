@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
+import { removeWarningKeys } from "../utils";
 
 const expandedStyles = {
   width: "100%",
@@ -31,6 +32,15 @@ const offMinifiedContainer = {
   display: "flex",
 };
 
+const warningKeys = [
+  "setActive",
+  "expanded",
+  "setExpanded",
+  "customWidth",
+  "customStyles",
+  "isSelected",
+];
+
 const AnimatedSolarButton = (props) => {
   const { active, item, setActive, expanded, setExpanded } = props;
   const getStyles = () => {
@@ -52,7 +62,7 @@ const AnimatedSolarButton = (props) => {
         setActive(null);
       }}
       style={styledProps}
-      {...props}
+      {...removeWarningKeys(props, warningKeys)}
     />
   );
 };
@@ -72,7 +82,12 @@ export const AnimatedSolarContainer = (props) => {
       : minifiedStyles;
   };
   const styledProps = useSpring(getStyles());
-  return <animated.div style={styledProps} {...props} />;
+  return (
+    <animated.div
+      style={styledProps}
+      {...removeWarningKeys(props, warningKeys)}
+    />
+  );
 };
 
 export const ComponentContainer = styled.div`
@@ -404,12 +419,22 @@ export const CommsContainer = styled(ComponentContainer)`
 
 const AnimatedContact = (props) => {
   const { customStyles } = props;
-  return <animated.div style={customStyles} {...props} />;
+  return (
+    <animated.div
+      style={customStyles}
+      {...removeWarningKeys(props, warningKeys)}
+    />
+  );
 };
 
 const AnimatedBaseButton = (props) => {
   const { customStyles } = props;
-  return <animated.button style={customStyles} {...props} />;
+  return (
+    <animated.button
+      style={customStyles}
+      {...removeWarningKeys(props, warningKeys)}
+    />
+  );
 };
 
 export const BaseAnimatedButton = styled(AnimatedBaseButton)`

@@ -11,6 +11,7 @@ const SolarPathfinder = ({ day }) => {
         stackId="1"
         stroke="#ff3d00"
         fill="#ff3d00"
+        key="wind_m_sec"
       />,
       <Area
         type="monotone"
@@ -18,6 +19,7 @@ const SolarPathfinder = ({ day }) => {
         stackId="1"
         stroke="#00e5ff"
         fill="#00e5ff"
+        key="wind_deg."
       />,
     ],
     "2": [
@@ -27,6 +29,7 @@ const SolarPathfinder = ({ day }) => {
         stackId="1"
         stroke="#64dd17"
         fill="#64dd17"
+        key="pressure_mb"
       />,
       <Area
         type="monotone"
@@ -34,6 +37,7 @@ const SolarPathfinder = ({ day }) => {
         stackId="1"
         stroke="#00e5ff"
         fill="#00e5ff"
+        key="temp_F"
       />,
       <Area
         type="monotone"
@@ -41,6 +45,7 @@ const SolarPathfinder = ({ day }) => {
         stackId="1"
         stroke="#ff3d00"
         fill="#ff3d00"
+        key="temp_C"
       />,
     ],
   };

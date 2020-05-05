@@ -11,6 +11,7 @@ const SolarPathfinder = ({ day }) => {
       stackId="1"
       stroke="#ff3d00"
       fill="#ff3d00"
+      key="t1celsius"
     />,
     <Area
       type="monotone"
@@ -18,6 +19,7 @@ const SolarPathfinder = ({ day }) => {
       stackId="1"
       stroke="#00e5ff"
       fill="#00e5ff"
+      key="t2celsius"
     />,
     <Area
       type="monotone"
@@ -25,6 +27,7 @@ const SolarPathfinder = ({ day }) => {
       stackId="1"
       stroke="#64dd17"
       fill="#64dd17"
+      key="t3celsius"
     />,
   ];
 

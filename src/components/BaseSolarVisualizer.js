@@ -31,7 +31,7 @@ const SolarPathFinderTemperatures = ({
       }
     };
     fetchData();
-  }, []);
+  }, [initialData, heapCount, adapter, url]);
 
   useEffect(() => {
     if (initialData) {
@@ -40,7 +40,7 @@ const SolarPathFinderTemperatures = ({
         setHeap(heapCount + 100);
       }
     }
-  }, [day]);
+  }, [day, heapCount, initialData]);
 
   const chartProps = {
     data,

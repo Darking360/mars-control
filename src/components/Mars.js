@@ -1,19 +1,9 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 // Original animation and work thanks to the amazing: https://codepen.io/tedmcdo
 // Author: Ted McDonald
 // Codesandbox here: https://codepen.io/tedmcdo/pen/MvyOjR
-
-const rotate = keyframes`
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-`;
 
 const StyledMars = styled.div`
   width: 100%;
@@ -90,8 +80,8 @@ const Mars = ({ day }) => {
   return (
     <StyledMars day={day}>
       <div className="planet">
-        <div class="mars">
-          <div class="img-map"></div>
+        <div className="mars">
+          <div className="img-map"></div>
         </div>
       </div>
     </StyledMars>

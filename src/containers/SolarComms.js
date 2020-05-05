@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated, config } from "react-spring";
 import CreateIcon from "@material-ui/icons/Create";
 import SendIcon from "@material-ui/icons/Send";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import {
   CommsContainer,
   Contact,
