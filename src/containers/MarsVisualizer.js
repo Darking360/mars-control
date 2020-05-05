@@ -1,12 +1,18 @@
 import React from "react";
-import { ComponentContainer } from "../components/Layout";
+import { MarsContainer } from "../components/Layout";
 import Mars from "../components/Mars";
+import SolarTitle from "../components/SolarTitle";
 
 const MarsVisualizer = () => {
   return (
-    <ComponentContainer>
+    <MarsContainer>
+      <SolarTitle title="Mars Visual" />
+      <section className="solar-day">
+        <span>Solar day:</span>
+        <span>120</span>
+      </section>
       <Mars />
-    </ComponentContainer>
+    </MarsContainer>
   );
 };
 

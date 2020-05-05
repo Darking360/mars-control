@@ -16,16 +16,39 @@ const rotate = keyframes`
 `;
 
 const StyledMars = styled.div`
-  transform: rotate3d(0, 0, 1, -25deg) scale3d(0.23, 0.23, 1);
-  transition: transform 1s ease;
-  border-radius: 100%;
-  width: 20rem;
-  height: 20rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  height: 70%;
+  div.planet {
+    transform: rotate3d(0, 0, 1, -25deg) scale3d(0.23, 0.23, 1);
+    transition: transform 1s ease;
+    border-radius: 100%;
+    width: 1000px;
+    height: 1000px;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 1000px;
+      height: 1000px;
+      position: absolute;
+      border-radius: 100%;
+      top: 0;
+      left: 0;
+      box-shadow: inset 25px 40px 100px 0px rgba(255, 255, 255, 0.45),
+        -50px -50px 150px 0px rgba(225, 69, 38, 0.35),
+        -25px -55px 150px 0px rgba(226, 108, 66, 0.2),
+        0 0 150px 100px rgba(58, 2, 0, 0.4);
+    }
+  }
 
   div.mars {
-    width: 1500px;
-    height: 1500px;
+    width: 1000px;
+    height: 1000px;
     border-radius: 100%;
     position: relative;
     overflow: hidden;
@@ -65,9 +88,11 @@ const StyledMars = styled.div`
 
 const Mars = () => {
   return (
-    <StyledMars class="planet">
-      <div class="mars">
-        <div class="img-map"></div>
+    <StyledMars>
+      <div className="planet">
+        <div class="mars">
+          <div class="img-map"></div>
+        </div>
       </div>
     </StyledMars>
   );

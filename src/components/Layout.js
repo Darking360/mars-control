@@ -457,3 +457,25 @@ border: 3px solid green;
     cursor: pointer;
   }
 `;
+
+export const MarsContainer = styled(ComponentContainer)`
+  section.solar-day {
+    height: 8%;
+    padding: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    span:first-child {
+      color: #00e676;
+      font-family: "Orbitron";
+    }
+    span:last-child {
+      color: white;
+    }
+  }
+`;
