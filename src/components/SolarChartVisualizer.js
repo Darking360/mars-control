@@ -54,7 +54,7 @@ const SolarChartVisualizer = ({ types, options, data, title, custom }) => {
               bottom: 0,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid stroke="#00e676" strokeDasharray="3 3" />
             <XAxis stroke="#00e676" dataKey="Sol" />
             <YAxis stroke="#00e676" domain={["auto", "auto"]} />
             <Tooltip />

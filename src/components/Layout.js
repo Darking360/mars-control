@@ -270,6 +270,7 @@ export const SpeakingWith = styled.section`
   }
   span:last-child {
     color: white;
+    margin-left: 0.5rem;
   }
   box-shadow: 0 1px 5px rgba(0, 229, 117, 1), 0 3px 5px rgba(0, 229, 117, 1);
   background-color: #323865;
