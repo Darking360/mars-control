@@ -1,11 +1,25 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useSpring, animated } from "react-spring";
 import Tooltip from "@material-ui/core/Tooltip";
 import { withStyles } from "@material-ui/core/styles";
 import { removeWarningKeys } from "../utils";
 
 // Main components ============================
+
+export const floatingEffect = keyframes`
+    0% {
+        box-shadow: 0 2px 8px rgba(0, 230, 118, 0.30), 0 3px 6px rgba(0, 230, 118, 0.22);
+    }
+
+    50% {
+        box-shadow: 0 4px 8px rgba(0, 230, 118, 0.25), 0 10px 10px rgba(0, 230, 118, 0.22);
+    }
+
+    100% {
+        box-shadow: 0 2px 8px rgba(0, 230, 118, 0.30), 0 3px 6px rgba(0, 230, 118, 0.22);
+    }
+`;
 
 export const ToggleAppButton = styled.button`
   background-color: none;
@@ -20,6 +34,7 @@ export const ToggleAppButton = styled.button`
   border-radius: 50%;
   color: #00e676;
   font-size: 18px;
+  animation: ${floatingEffect} 2s infinite;
   svg {
     width: 3rem;
     height: 3rem;
@@ -623,6 +638,7 @@ export const StyledAppBar = styled.header`
     svg {
       width: 2rem;
       height: 2rem;
+      color: red;
     }
   }
   div.content {

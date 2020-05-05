@@ -20,7 +20,7 @@ import { useSpring } from "react-spring";
 const MainContainer = () => {
   const [day, setTheDay] = useState(1);
   const [time, setTime] = useState(60);
-  const [on, setOn] = useState(true);
+  const [on, setOn] = useState(false);
 
   const initializerStyles = useSpring(on ? offStyles : onStyles);
   const appStyles = useSpring(
