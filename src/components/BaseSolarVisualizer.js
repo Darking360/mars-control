@@ -10,6 +10,7 @@ const SolarPathFinderTemperatures = ({
   title,
   custom,
   day,
+  file,
 }) => {
   const [initialData, setInitialData] = useState(null);
   const [data, setData] = useState([]);
@@ -20,7 +21,7 @@ const SolarPathFinderTemperatures = ({
     const fetchData = async () => {
       try {
         if (!initialData) {
-          let temporalData = await d3[adapter](url);
+          let temporalData = await d3[adapter](url); // TODO probably change it
           setInitialData(temporalData);
           setData(temporalData.slice(heapCount, heapCount + 30));
           setHeap(heapCount + 30);
@@ -32,7 +33,7 @@ const SolarPathFinderTemperatures = ({
       }
     };
     fetchData();
-  }, [heapCount, adapter, url, initialData]);
+  }, [heapCount, adapter, url, initialData]); // TODO change URL or param to read the data
 
   useEffect(() => {
     if (initialData && previousDayRef.current !== day) {
@@ -53,6 +54,7 @@ const SolarPathFinderTemperatures = ({
     options,
     title,
     custom,
+    file,
   };
 
   return <SolarChartVisualizer {...chartProps} />;
